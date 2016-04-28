@@ -1,0 +1,16 @@
+{
+  "name": "vyuha-daemon",
+  "version": "0.0.0",
+  "description": "",
+  "main": "vyuha-daemon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prakash Venkatraman",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "*",
+    "mkdirp": "*",
+    "node-unzip": "*"
+  }
+}
