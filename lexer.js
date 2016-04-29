@@ -11,22 +11,50 @@ TOKEN_EXPRESSIONS = {
   TASK_EXECUTION: /\w+\;$/
 }
 
-var lex = function(line) {
+var scan = function(body) {
+  console.log(body);
+  var lines = body.split('\n');
+  lines.forEach(this.push.bind(this));
+}
+
+var lex = function(lexeme) {
   // Detect token expressions
   //  if there is a match, add [token, TAG]
   //  to tokens list
-  if (TOKEN_EXPRESSIONS.COMMENT.test(line)) {
-
+  if (TOKEN_EXPRESSIONS.COMMENT.test(lexeme)) {
+    var index = lexeme.indexOf('#') + 1;
+    var data = {
+      type: 'COMMENT',
+      value: lexeme.slice(index).trim()
+    }
+    this.push(JSON.stringify(data));
   }
-  else if (TOKEN_EXPRESSIONS.TASK_ID.test(line)) {
-
+  else if (TOKEN_EXPRESSIONS.TASK_ID.test(lexeme)) {
+    var index = lexeme.indexOf(':');
+    var data = {
+      type: 'TASK_ID',
+      value: lexeme.slice(0, index).trim()
+    }
+    this.push(JSON.stringify(data));
   }
-  else if (TOKEN_EXPRESSIONS.TASK_COMMAND.test(line)) {
-
+  else if (TOKEN_EXPRESSIONS.TASK_COMMAND.test(lexeme)) {
+    var data = {
+      type: 'TASK_COMMAND',
+      value: lexeme.trim()
+    }
+    this.push(JSON.stringify(data));
   }
-  else if (TOKEN_EXPRESSIONS.TASK_EXECUTION.test(line)) {
-
+  else if (TOKEN_EXPRESSIONS.TASK_EXECUTION.test(lexeme)) {
+    var index = lexeme.indexOf(';');
+    var data = {
+      type: 'TASK_EXECUTION',
+      value: lexeme.slice(0, index).trim()
+    }
+    this.push(JSON.stringify(data));
   }
 }
 
-module.exports = streamify(lex);
+module.exports = {
+  scan: streamify(scan),
+  lex: streamify(lex)
+}

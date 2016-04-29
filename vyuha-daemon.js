@@ -25,19 +25,23 @@ chokidar.watch(config.INPUT_PATH)
 //    emit received event,
 //    unpackage the zip file.
   .on('add', addedPath =>
+      var fullpath = null;
       fs.createReadStream(addedPath)
         .pipe(unzip.Parse())
         .on('entry', function(entry) {
+          fullpath = path.join(config.OUPUT_PATH, entry.path)
           switch(entry.type) {
             case 'Directory':
               // Make the directory
-              mkdirp(entry.path);
+              mkdirp(fullpath);
               break;
             case 'File':
               // Write the file
-              fs.createWriteStream(entry.path);
-              break;
+              entry.pipe(fs.createWriteStream(fullpath));
           }
+        })
+        .on('close', function() {
+          kickoff(fullpath);
         });
     )
 ;
@@ -48,14 +52,17 @@ chokidar.watch(config.INPUT_PATH)
 //    pass it to <Scriptfile> parser
 
 function kickoff(fullpath) {
+  if (fullpath === null) { return; }
   fs.readdir(fullpath, function(err, files) {
     var isValid = files.filter(function(item) {return item === 'Vyuhafile'});
-    if (isValid) {
+    if (isValid.length > 0) {
       fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
-        .pipe(lexer.lex())
-        .pipe(parser.parse())
-        .pipe(executer.execute())
-        .pipe(success())
+        // .pipe(lexer.scan())
+        .pipe(lexer.lex)
+        .pipe(process.stdout)
+        // .pipe(parser.parse)
+        // .pipe(evaluator.queue)
+        // .pipe(success)
         ;
     }
   })

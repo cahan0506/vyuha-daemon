@@ -6,7 +6,7 @@ var stream = require('stream');
 var streamify = function(fn) {
   var s = new stream.Transform({objectMode: true});
   s._transform = function(chunk, enc, done) {
-    fn.bind(this)(chunk);
+    fn.bind(this)(chunk.toString());
     done();
   }
 
