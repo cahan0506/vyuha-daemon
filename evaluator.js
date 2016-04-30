@@ -9,7 +9,6 @@ var Evaluator = function() {
   this.table = {};
 
   this._evaluate = function(command) {
-    console.log(command);
     exec(command, function(err, stdout, stderr) {
       if (err) {throw err}
       console.log(stdout);
