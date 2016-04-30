@@ -12,7 +12,6 @@ TOKEN_EXPRESSIONS = {
 }
 
 var scan = function(body) {
-  console.log(body);
   var lines = body.split('\n');
   lines.forEach(this.push.bind(this));
 }

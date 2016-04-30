@@ -12,10 +12,11 @@ SETUP:
   echo 'setup complete'
 
 RUN:
-  # gulp build
-  nodejs test.js
+  gulp build
+  node index.js
   echo 'project running'
 
 TASKNAME;
 SETUP;
 RUN;
+

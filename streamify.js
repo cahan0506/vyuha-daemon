@@ -3,10 +3,10 @@ var stream = require('stream');
 // This is how streamify is supposed to work:
 // streamify(function(text) {})
 
-var streamify = function(fn) {
+var streamify = function(fn, env) {
   var s = new stream.Transform({objectMode: true});
   s._transform = function(chunk, enc, done) {
-    fn.bind(this)(chunk.toString());
+    fn.bind(this)(chunk.toString(), env);
     done();
   }
 

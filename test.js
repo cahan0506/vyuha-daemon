@@ -3,6 +3,8 @@ var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
 var lexer = require('./lexer');
+var Parser = require('./parser');
+var Evaluator = require('./evaluator');
 
 var addedPath = './TEST.zip';
 var fullpath = null;
@@ -33,12 +35,14 @@ function kickoff(fullpath) {
   fs.readdir(fullpath, function(err, files) {
     var isValid = files.filter(function(item) {return item === 'Vyuhafile'});
     if (isValid.length > 0) {
+      var parser = new Parser();
+      var evaluator = new Evaluator();
       fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
         .pipe(lexer.scan)
         .pipe(lexer.lex)
-        .pipe(process.stdout)
-        // .pipe(parser.parse)
-        // .pipe(evaluator.queue)
+        .pipe(parser.parse)
+        .pipe(evaluator.queue)
+        .pipe(evaluator.evaluate)
         // .pipe(success)
         ;
     }
