@@ -69,10 +69,21 @@
 23 verbose addNamed [ null, '*' ]
 24 silly lockFile c12ebca1-chokidar chokidar@*
 25 verbose lock chokidar@* /home/pv/.npm/c12ebca1-chokidar.lock
-26 silly lockFile 49c57f5b-mkdirp mkdirp@*
-27 verbose lock mkdirp@* /home/pv/.npm/49c57f5b-mkdirp.lock
-28 verbose cache add [ 'node-unzip@*', null ]
-29 verbose cache add name=undefined spec="node-unzip@*" args=["node-unzip@*",null]
+26 verbose cache add [ 'node-unzip@*', null ]
+27 verbose cache add name=undefined spec="node-unzip@*" args=["node-unzip@*",null]
+28 verbose parsed url { protocol: null,
+28 verbose parsed url   slashes: null,
+28 verbose parsed url   auth: null,
+28 verbose parsed url   host: null,
+28 verbose parsed url   port: null,
+28 verbose parsed url   hostname: null,
+28 verbose parsed url   hash: null,
+28 verbose parsed url   search: null,
+28 verbose parsed url   query: null,
+28 verbose parsed url   pathname: 'node-unzip@*',
+28 verbose parsed url   path: 'node-unzip@*',
+28 verbose parsed url   href: 'node-unzip@*' }
+29 verbose cache add name="node-unzip" spec="*" args=["node-unzip","*"]
 30 verbose parsed url { protocol: null,
 30 verbose parsed url   slashes: null,
 30 verbose parsed url   auth: null,
@@ -82,212 +93,126 @@
 30 verbose parsed url   hash: null,
 30 verbose parsed url   search: null,
 30 verbose parsed url   query: null,
-30 verbose parsed url   pathname: 'node-unzip@*',
-30 verbose parsed url   path: 'node-unzip@*',
-30 verbose parsed url   href: 'node-unzip@*' }
-31 verbose cache add name="node-unzip" spec="*" args=["node-unzip","*"]
-32 verbose parsed url { protocol: null,
-32 verbose parsed url   slashes: null,
-32 verbose parsed url   auth: null,
-32 verbose parsed url   host: null,
-32 verbose parsed url   port: null,
-32 verbose parsed url   hostname: null,
-32 verbose parsed url   hash: null,
-32 verbose parsed url   search: null,
-32 verbose parsed url   query: null,
-32 verbose parsed url   pathname: '*',
-32 verbose parsed url   path: '*',
-32 verbose parsed url   href: '*' }
-33 verbose addNamed [ 'node-unzip', '*' ]
-34 verbose addNamed [ null, '*' ]
-35 silly lockFile c07288d8-node-unzip node-unzip@*
-36 verbose lock node-unzip@* /home/pv/.npm/c07288d8-node-unzip.lock
+30 verbose parsed url   pathname: '*',
+30 verbose parsed url   path: '*',
+30 verbose parsed url   href: '*' }
+31 verbose addNamed [ 'node-unzip', '*' ]
+32 verbose addNamed [ null, '*' ]
+33 silly lockFile c07288d8-node-unzip node-unzip@*
+34 verbose lock node-unzip@* /home/pv/.npm/c07288d8-node-unzip.lock
+35 silly lockFile 49c57f5b-mkdirp mkdirp@*
+36 verbose lock mkdirp@* /home/pv/.npm/49c57f5b-mkdirp.lock
 37 silly addNameRange { name: 'chokidar', range: '*', hasData: false }
 38 silly addNameRange { name: 'mkdirp', range: '*', hasData: false }
-39 verbose url raw chokidar
-40 verbose url resolving [ 'https://registry.npmjs.org/', './chokidar' ]
-41 verbose url resolved https://registry.npmjs.org/chokidar
-42 info trying registry request attempt 1 at 23:56:00
-43 verbose etag "5U7TMGIWZKR0YUHZVTCM9DH51"
-44 http GET https://registry.npmjs.org/chokidar
-45 verbose url raw mkdirp
-46 verbose url resolving [ 'https://registry.npmjs.org/', './mkdirp' ]
-47 verbose url resolved https://registry.npmjs.org/mkdirp
-48 info trying registry request attempt 1 at 23:56:00
-49 verbose etag "DV3T2GI2U25M7SY8OTKIZ5BJU"
-50 http GET https://registry.npmjs.org/mkdirp
-51 http 304 https://registry.npmjs.org/chokidar
-52 silly registry.get cb [ 304,
-52 silly registry.get   { date: 'Sat, 30 Apr 2016 03:56:00 GMT',
-52 silly registry.get     via: '1.1 varnish',
-52 silly registry.get     'cache-control': 'max-age=300',
-52 silly registry.get     etag: '"5U7TMGIWZKR0YUHZVTCM9DH51"',
-52 silly registry.get     age: '53',
-52 silly registry.get     connection: 'keep-alive',
-52 silly registry.get     'x-served-by': 'cache-iad2124-IAD',
-52 silly registry.get     'x-cache': 'HIT',
-52 silly registry.get     'x-cache-hits': '1',
-52 silly registry.get     'x-timer': 'S1461988560.450502,VS0,VE0',
-52 silly registry.get     vary: 'Accept-Encoding' } ]
-53 verbose etag chokidar from cache
-54 http 304 https://registry.npmjs.org/mkdirp
-55 silly registry.get cb [ 304,
-55 silly registry.get   { date: 'Sat, 30 Apr 2016 03:56:00 GMT',
-55 silly registry.get     via: '1.1 varnish',
-55 silly registry.get     'cache-control': 'max-age=300',
-55 silly registry.get     etag: '"DV3T2GI2U25M7SY8OTKIZ5BJU"',
-55 silly registry.get     age: '53',
-55 silly registry.get     connection: 'keep-alive',
-55 silly registry.get     'x-served-by': 'cache-iad2145-IAD',
-55 silly registry.get     'x-cache': 'HIT',
-55 silly registry.get     'x-cache-hits': '1',
-55 silly registry.get     'x-timer': 'S1461988560.456177,VS0,VE0',
-55 silly registry.get     vary: 'Accept-Encoding' } ]
-56 verbose etag mkdirp from cache
-57 silly addNameRange number 2 { name: 'chokidar', range: '*', hasData: true }
-58 silly addNameRange versions [ 'chokidar',
-58 silly addNameRange   [ '0.1.1',
-58 silly addNameRange     '0.2.0',
-58 silly addNameRange     '0.2.1',
-58 silly addNameRange     '0.2.2',
-58 silly addNameRange     '0.2.3',
-58 silly addNameRange     '0.2.4',
-58 silly addNameRange     '0.2.5',
-58 silly addNameRange     '0.2.6',
-58 silly addNameRange     '0.3.0',
-58 silly addNameRange     '0.4.0',
-58 silly addNameRange     '0.5.0',
-58 silly addNameRange     '0.5.1',
-58 silly addNameRange     '0.5.2',
-58 silly addNameRange     '0.5.3',
-58 silly addNameRange     '0.6.0',
-58 silly addNameRange     '0.6.1',
-58 silly addNameRange     '0.6.2',
-58 silly addNameRange     '0.6.3',
-58 silly addNameRange     '0.7.0',
-58 silly addNameRange     '0.7.1',
-58 silly addNameRange     '0.8.0',
-58 silly addNameRange     '0.8.1',
-58 silly addNameRange     '0.8.2',
-58 silly addNameRange     '0.8.3',
-58 silly addNameRange     '0.8.4',
-58 silly addNameRange     '0.9.0',
-58 silly addNameRange     '0.10.0',
-58 silly addNameRange     '0.10.1',
-58 silly addNameRange     '0.10.2',
-58 silly addNameRange     '0.10.3',
-58 silly addNameRange     '0.10.4',
-58 silly addNameRange     '0.10.5',
-58 silly addNameRange     '0.10.6',
-58 silly addNameRange     '0.10.7',
-58 silly addNameRange     '0.10.8',
-58 silly addNameRange     '0.10.9',
-58 silly addNameRange     '0.11.0',
-58 silly addNameRange     '0.11.1',
-58 silly addNameRange     '0.12.0',
-58 silly addNameRange     '0.12.1',
-58 silly addNameRange     '0.12.2',
-58 silly addNameRange     '0.12.3',
-58 silly addNameRange     '0.12.4',
-58 silly addNameRange     '0.12.5',
-58 silly addNameRange     '0.12.6',
-58 silly addNameRange     '1.0.0-rc1',
-58 silly addNameRange     '1.0.0-rc1.1',
-58 silly addNameRange     '1.0.0-rc2',
-58 silly addNameRange     '1.0.0-rc3',
-58 silly addNameRange     '1.0.0-rc4',
-58 silly addNameRange     '1.0.0-rc5',
-58 silly addNameRange     '1.0.0',
-58 silly addNameRange     '1.0.1',
-58 silly addNameRange     '1.0.2',
-58 silly addNameRange     '1.0.3',
-58 silly addNameRange     '1.0.4',
-58 silly addNameRange     '1.0.5',
-58 silly addNameRange     '1.0.6',
-58 silly addNameRange     '1.1.0',
-58 silly addNameRange     '1.2.0',
-58 silly addNameRange     '1.3.0',
-58 silly addNameRange     '1.4.0',
-58 silly addNameRange     '1.4.1',
-58 silly addNameRange     '1.4.2',
-58 silly addNameRange     '1.4.3' ] ]
-59 verbose addNamed [ 'chokidar', '1.4.3' ]
-60 verbose addNamed [ '1.4.3', '1.4.3' ]
-61 silly lockFile 16780dc7-chokidar-1-4-3 chokidar@1.4.3
-62 verbose lock chokidar@1.4.3 /home/pv/.npm/16780dc7-chokidar-1-4-3.lock
-63 silly addNameRange number 2 { name: 'mkdirp', range: '*', hasData: true }
-64 silly addNameRange versions [ 'mkdirp',
-64 silly addNameRange   [ '0.0.1',
-64 silly addNameRange     '0.0.2',
-64 silly addNameRange     '0.0.3',
-64 silly addNameRange     '0.0.4',
-64 silly addNameRange     '0.0.5',
-64 silly addNameRange     '0.0.6',
-64 silly addNameRange     '0.0.7',
-64 silly addNameRange     '0.1.0',
-64 silly addNameRange     '0.2.0',
-64 silly addNameRange     '0.2.1',
-64 silly addNameRange     '0.2.2',
-64 silly addNameRange     '0.3.0',
-64 silly addNameRange     '0.3.1',
-64 silly addNameRange     '0.3.2',
-64 silly addNameRange     '0.3.3',
-64 silly addNameRange     '0.3.4',
-64 silly addNameRange     '0.3.5',
-64 silly addNameRange     '0.4.0',
-64 silly addNameRange     '0.4.1',
-64 silly addNameRange     '0.4.2',
-64 silly addNameRange     '0.5.0',
-64 silly addNameRange     '0.5.1' ] ]
-65 verbose addNamed [ 'mkdirp', '0.5.1' ]
-66 verbose addNamed [ '0.5.1', '0.5.1' ]
+39 silly addNameRange { name: 'node-unzip', range: '*', hasData: false }
+40 verbose url raw chokidar
+41 verbose url resolving [ 'https://registry.npmjs.org/', './chokidar' ]
+42 verbose url resolved https://registry.npmjs.org/chokidar
+43 info trying registry request attempt 1 at 23:59:47
+44 verbose etag "5U7TMGIWZKR0YUHZVTCM9DH51"
+45 http GET https://registry.npmjs.org/chokidar
+46 verbose url raw mkdirp
+47 verbose url resolving [ 'https://registry.npmjs.org/', './mkdirp' ]
+48 verbose url resolved https://registry.npmjs.org/mkdirp
+49 info trying registry request attempt 1 at 23:59:47
+50 verbose etag "DV3T2GI2U25M7SY8OTKIZ5BJU"
+51 http GET https://registry.npmjs.org/mkdirp
+52 verbose url raw node-unzip
+53 verbose url resolving [ 'https://registry.npmjs.org/', './node-unzip' ]
+54 verbose url resolved https://registry.npmjs.org/node-unzip
+55 info trying registry request attempt 1 at 23:59:47
+56 http GET https://registry.npmjs.org/node-unzip
+57 http 304 https://registry.npmjs.org/mkdirp
+58 silly registry.get cb [ 304,
+58 silly registry.get   { date: 'Sat, 30 Apr 2016 03:59:47 GMT',
+58 silly registry.get     via: '1.1 varnish',
+58 silly registry.get     'cache-control': 'max-age=300',
+58 silly registry.get     etag: '"DV3T2GI2U25M7SY8OTKIZ5BJU"',
+58 silly registry.get     age: '279',
+58 silly registry.get     connection: 'keep-alive',
+58 silly registry.get     'x-served-by': 'cache-atl6227-ATL',
+58 silly registry.get     'x-cache': 'HIT',
+58 silly registry.get     'x-cache-hits': '3',
+58 silly registry.get     'x-timer': 'S1461988787.351996,VS0,VE0',
+58 silly registry.get     vary: 'Accept-Encoding' } ]
+59 verbose etag mkdirp from cache
+60 silly addNameRange number 2 { name: 'mkdirp', range: '*', hasData: true }
+61 silly addNameRange versions [ 'mkdirp',
+61 silly addNameRange   [ '0.0.1',
+61 silly addNameRange     '0.0.2',
+61 silly addNameRange     '0.0.3',
+61 silly addNameRange     '0.0.4',
+61 silly addNameRange     '0.0.5',
+61 silly addNameRange     '0.0.6',
+61 silly addNameRange     '0.0.7',
+61 silly addNameRange     '0.1.0',
+61 silly addNameRange     '0.2.0',
+61 silly addNameRange     '0.2.1',
+61 silly addNameRange     '0.2.2',
+61 silly addNameRange     '0.3.0',
+61 silly addNameRange     '0.3.1',
+61 silly addNameRange     '0.3.2',
+61 silly addNameRange     '0.3.3',
+61 silly addNameRange     '0.3.4',
+61 silly addNameRange     '0.3.5',
+61 silly addNameRange     '0.4.0',
+61 silly addNameRange     '0.4.1',
+61 silly addNameRange     '0.4.2',
+61 silly addNameRange     '0.5.0',
+61 silly addNameRange     '0.5.1' ] ]
+62 verbose addNamed [ 'mkdirp', '0.5.1' ]
+63 verbose addNamed [ '0.5.1', '0.5.1' ]
+64 silly lockFile 8968b51f-mkdirp-0-5-1 mkdirp@0.5.1
+65 verbose lock mkdirp@0.5.1 /home/pv/.npm/8968b51f-mkdirp-0-5-1.lock
+66 silly lockFile 8968b51f-mkdirp-0-5-1 mkdirp@0.5.1
 67 silly lockFile 8968b51f-mkdirp-0-5-1 mkdirp@0.5.1
-68 verbose lock mkdirp@0.5.1 /home/pv/.npm/8968b51f-mkdirp-0-5-1.lock
-69 silly lockFile 16780dc7-chokidar-1-4-3 chokidar@1.4.3
-70 silly lockFile 16780dc7-chokidar-1-4-3 chokidar@1.4.3
-71 silly lockFile 8968b51f-mkdirp-0-5-1 mkdirp@0.5.1
-72 silly lockFile 8968b51f-mkdirp-0-5-1 mkdirp@0.5.1
-73 silly lockFile c12ebca1-chokidar chokidar@*
-74 silly lockFile c12ebca1-chokidar chokidar@*
-75 silly lockFile 49c57f5b-mkdirp mkdirp@*
-76 silly lockFile 49c57f5b-mkdirp mkdirp@*
-77 silly addNameRange { name: 'node-unzip', range: '*', hasData: false }
-78 verbose url raw node-unzip
-79 verbose url resolving [ 'https://registry.npmjs.org/', './node-unzip' ]
-80 verbose url resolved https://registry.npmjs.org/node-unzip
-81 info trying registry request attempt 1 at 23:56:57
-82 http GET https://registry.npmjs.org/node-unzip
-83 http 404 https://registry.npmjs.org/node-unzip
-84 silly registry.get cb [ 404,
-84 silly registry.get   { 'content-type': 'application/json',
-84 silly registry.get     'cache-control': 'max-age=0',
-84 silly registry.get     'content-length': '2',
-84 silly registry.get     'accept-ranges': 'bytes',
-84 silly registry.get     date: 'Sat, 30 Apr 2016 03:56:58 GMT',
-84 silly registry.get     via: '1.1 varnish',
-84 silly registry.get     age: '0',
-84 silly registry.get     connection: 'keep-alive',
-84 silly registry.get     'x-served-by': 'cache-iad2143-IAD',
-84 silly registry.get     'x-cache': 'MISS',
-84 silly registry.get     'x-cache-hits': '0',
-84 silly registry.get     'x-timer': 'S1461988618.435420,VS0,VE24',
-84 silly registry.get     vary: 'Accept-Encoding' } ]
-85 silly addNameRange number 2 { name: 'node-unzip', range: '*', hasData: true }
-86 silly addNameRange versions [ undefined, [] ]
-87 error TypeError: Cannot read property 'latest' of undefined
-87 error     at next (/usr/share/npm/lib/cache.js:687:35)
-87 error     at /usr/share/npm/lib/cache.js:675:5
-87 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:142:7)
-87 error     at /usr/lib/nodejs/graceful-fs/polyfills.js:133:7
-87 error     at Object.oncomplete (fs.js:107:15)
-88 error If you need help, you may report this log at:
-88 error     <http://github.com/isaacs/npm/issues>
-88 error or email it to:
-88 error     <npm-@googlegroups.com>
-89 error System Linux 4.2.0-27-generic
-90 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
-91 error cwd /home/pv/Proj/lab/vyuha-daemon
-92 error node -v v0.10.25
-93 error npm -v 1.3.10
-94 error type non_object_property_load
-95 verbose exit [ 1, true ]
+68 silly lockFile 49c57f5b-mkdirp mkdirp@*
+69 silly lockFile 49c57f5b-mkdirp mkdirp@*
+70 http 304 https://registry.npmjs.org/chokidar
+71 silly registry.get cb [ 304,
+71 silly registry.get   { date: 'Sat, 30 Apr 2016 03:59:47 GMT',
+71 silly registry.get     via: '1.1 varnish',
+71 silly registry.get     'cache-control': 'max-age=300',
+71 silly registry.get     etag: '"5U7TMGIWZKR0YUHZVTCM9DH51"',
+71 silly registry.get     age: '0',
+71 silly registry.get     connection: 'keep-alive',
+71 silly registry.get     'x-served-by': 'cache-atl6241-ATL',
+71 silly registry.get     'x-cache': 'HIT',
+71 silly registry.get     'x-cache-hits': '1',
+71 silly registry.get     'x-timer': 'S1461988787.351431,VS0,VE343',
+71 silly registry.get     vary: 'Accept-Encoding' } ]
+72 verbose etag chokidar from cache
+73 http 404 https://registry.npmjs.org/node-unzip
+74 silly registry.get cb [ 404,
+74 silly registry.get   { 'content-type': 'application/json',
+74 silly registry.get     'cache-control': 'max-age=0',
+74 silly registry.get     'content-length': '2',
+74 silly registry.get     'accept-ranges': 'bytes',
+74 silly registry.get     date: 'Sat, 30 Apr 2016 03:59:47 GMT',
+74 silly registry.get     via: '1.1 varnish',
+74 silly registry.get     age: '0',
+74 silly registry.get     connection: 'keep-alive',
+74 silly registry.get     'x-served-by': 'cache-atl6235-ATL',
+74 silly registry.get     'x-cache': 'MISS',
+74 silly registry.get     'x-cache-hits': '0',
+74 silly registry.get     'x-timer': 'S1461988787.344024,VS0,VE353',
+74 silly registry.get     vary: 'Accept-Encoding' } ]
+75 silly addNameRange number 2 { name: 'node-unzip', range: '*', hasData: true }
+76 silly addNameRange versions [ undefined, [] ]
+77 error TypeError: Cannot read property 'latest' of undefined
+77 error     at next (/usr/share/npm/lib/cache.js:687:35)
+77 error     at /usr/share/npm/lib/cache.js:675:5
+77 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:142:7)
+77 error     at /usr/lib/nodejs/graceful-fs/polyfills.js:133:7
+77 error     at Object.oncomplete (fs.js:107:15)
+78 error If you need help, you may report this log at:
+78 error     <http://github.com/isaacs/npm/issues>
+78 error or email it to:
+78 error     <npm-@googlegroups.com>
+79 error System Linux 4.2.0-27-generic
+80 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+81 error cwd /home/pv/Proj/lab/vyuha-daemon
+82 error node -v v0.10.25
+83 error npm -v 1.3.10
+84 error type non_object_property_load
+85 verbose exit [ 1, true ]
