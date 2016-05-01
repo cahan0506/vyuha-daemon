@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "chokidar": "^1.4.3",
+    "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "unzip": "^0.1.11"
   }
