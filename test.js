@@ -43,7 +43,9 @@ function kickoff(fullpath) {
         .pipe(parser.parse)
         .pipe(evaluator.queue)
         .pipe(evaluator.evaluate)
-        // .pipe(success)
+        .on('error', function(err) {
+          throw err;
+        })
         ;
     }
   })

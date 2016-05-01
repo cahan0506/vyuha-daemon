@@ -2,17 +2,15 @@
 // ----------------------------------------
 // Evaluates an AST
 
-var exec = require('child_process').exec;
+var exec = require('child_process').execSync;
 var streamify = require('./streamify');
 
 var Evaluator = function() {
   this.table = {};
 
   this._evaluate = function(command) {
-    exec(command, function(err, stdout, stderr) {
-      if (err) {throw err}
-      console.log(stdout);
-    })
+    var stdout = exec(command);
+    console.log(stdout.toString());
   }
 
   this._queue = function(node, scope) {

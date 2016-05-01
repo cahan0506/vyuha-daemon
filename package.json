@@ -9,8 +9,8 @@
   "author": "Prakash Venkatraman",
   "license": "MIT",
   "dependencies": {
-    "chokidar": "*",
-    "mkdirp": "*",
-    "node-unzip": "*"
+    "chokidar": "^1.4.3",
+    "mkdirp": "^0.5.1",
+    "unzip": "^0.1.11"
   }
 }

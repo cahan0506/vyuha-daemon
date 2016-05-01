@@ -13,7 +13,7 @@ SETUP:
 
 RUN:
   # gulp build
-  nodejs hello.js
+  node hello.js
   echo 'project running'
 
 TASKNAME;
