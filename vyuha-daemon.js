@@ -10,9 +10,9 @@ var chokidar = require('chokidar');
 var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
-var lexer = require('./lexer');
-var Parser = require('./parser');
-var Evaluator = require('./evaluator');
+var lexer = require('./lib/lexer');
+var Parser = require('./lib/parser');
+var Evaluator = require('./lib/evaluator');
 
 // Constants
 var CONFIG_FILE_PATH = "~/.vyuha/config.json";

@@ -2,9 +2,9 @@ var fs = require('fs');
 var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
-var lexer = require('./lexer');
-var Parser = require('./parser');
-var Evaluator = require('./evaluator');
+var lexer = require('../../lib/lexer');
+var Parser = require('../../lib/parser');
+var Evaluator = require('../../lib/evaluator');
 
 var addedPath = './TEST.zip';
 var fullpath = null;
