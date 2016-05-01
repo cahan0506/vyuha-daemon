@@ -6,11 +6,13 @@
 // script is run.
 // ----------------------------------
 var fs = require('fs');
-var tar = require('tar');
 var chokidar = require('chokidar');
+var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
-var unzip = require('unzip');
+var lexer = require('./lexer');
+var Parser = require('./parser');
+var Evaluator = require('./evaluator');
 
 // Constants
 var CONFIG_FILE_PATH = "~/.vyuha/config.json";
@@ -29,10 +31,10 @@ chokidar.watch(config.INPUT_PATH)
       fs.createReadStream(addedPath)
         .pipe(unzip.Parse())
         .on('entry', function(entry) {
-          fullpath = path.join(config.OUPUT_PATH, entry.path)
           switch(entry.type) {
             case 'Directory':
               // Make the directory
+              fullpath = path.join(config.OUPUT_PATH, entry.path)
               mkdirp(fullpath);
               break;
             case 'File':
@@ -49,20 +51,24 @@ chokidar.watch(config.INPUT_PATH)
 // Once unzipped and unarchived, check for a <Scriptfile>.
 // If it exists,
 //    emit parsing event
-//    pass it to <Scriptfile> parser
+//    pass it to parser
 
 function kickoff(fullpath) {
   if (fullpath === null) { return; }
   fs.readdir(fullpath, function(err, files) {
     var isValid = files.filter(function(item) {return item === 'Vyuhafile'});
     if (isValid.length > 0) {
+      var parser = new Parser();
+      var evaluator = new Evaluator();
       fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
-        // .pipe(lexer.scan())
+        .pipe(lexer.scan)
         .pipe(lexer.lex)
-        .pipe(process.stdout)
-        // .pipe(parser.parse)
-        // .pipe(evaluator.queue)
-        // .pipe(success)
+        .pipe(parser.parse)
+        .pipe(evaluator.queue)
+        .pipe(evaluator.evaluate)
+        .on('error', function(err) {
+          throw err;
+        })
         ;
     }
   })
