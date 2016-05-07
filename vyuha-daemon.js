@@ -10,6 +10,7 @@ var chokidar = require('chokidar');
 var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
+var streamify = require('./lib/streamify');
 var lexer = require('./lib/lexer');
 var Parser = require('./lib/parser');
 var Evaluator = require('./lib/evaluator');
@@ -48,6 +49,8 @@ chokidar.watch(config.INPUT_PATH)
     )
 ;
 
+console.log('Watching %s for changes', config.INPUT_PATH);
+
 // Once unzipped and unarchived, check for a <Scriptfile>.
 // If it exists,
 //    emit parsing event
@@ -61,11 +64,11 @@ function kickoff(fullpath) {
       var parser = new Parser();
       var evaluator = new Evaluator();
       fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
-        .pipe(lexer.scan)
-        .pipe(lexer.lex)
-        .pipe(parser.parse)
-        .pipe(evaluator.queue)
-        .pipe(evaluator.evaluate)
+        .pipe(streamify(lexer.scan))
+        .pipe(streamify(lexer.lex))
+        .pipe(streamify(parser.parse))
+        .pipe(streamify(evaluator.queue))
+        .pipe(streamify(evaluator.evaluate))
         .on('error', function(err) {
           throw err;
         })
