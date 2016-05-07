@@ -1,13 +1,24 @@
+#!/usr/bin/env node
+
 // ----------------------------------
 // CLI
 //
 // Command line tool
 // ----------------------------------
 
-var argv = require('minimist')(process.argv.slice(2));
+var program = require('commander');
+ 
+program
+  .version('0.0.1')
+  .usage('<cmd>')
+  .option('-d, --daemon', 'Run Vyuha as a daemon process')
+  .option('-p, --package', 'Package your project')
+  .option('-y, --deploy', 'Deploy your project')
+  .parse(process.argv);
 
-var daemonFlag = argv.d;
+if (program.daemon) {
+    console.log('Running in Daemon Mode');
+}
+else {
 
-if (d) {
-  console.log('will run daemon process');
 }
