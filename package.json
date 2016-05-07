@@ -1,17 +1,21 @@
 {
   "name": "vyuha-daemon",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Package and deploy your project remotely",
   "main": "vyuha-daemon.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "Prakash Venkatraman",
   "license": "MIT",
   "dependencies": {
+    "archiver": "^1.0.0",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
     "chokidar": "^1.4.3",
-    "minimist": "^1.2.0",
+    "commander": "^2.9.0",
     "mkdirp": "^0.5.1",
+    "mocha": "^2.4.5",
     "unzip": "^0.1.11"
   }
 }
