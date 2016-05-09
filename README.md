@@ -1,3 +1,5 @@
+https://travis-ci.org/dopatraman/vyuha-daemon.svg?branch=master
+
 ## Welcome
 
 Vyuha is a service that makes deploying projects as easy as possible. It is a daemon process that checks a directory (called the landing zone) for changes. Once a change is detected, the added file is checked for format (zip), unzipped, added to an output directory.
