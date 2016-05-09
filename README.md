@@ -1,4 +1,4 @@
-https://travis-ci.org/dopatraman/vyuha-daemon.svg?branch=master
+![Build Passing](https://travis-ci.org/dopatraman/vyuha-daemon.svg?branch=master)
 
 ## Welcome
 
