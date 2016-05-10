@@ -52,5 +52,18 @@ describe('#Parser', function() {
 
       expect(p._localMemory.prevToken.commands.length).to.equal(1);
     });
-  })
+    it('should add a task execution node to the ast', function() {
+      var token = {
+        type: 'TASK_EXECUTION',
+        value: 'HELLO'
+      };
+      var scope = p;
+      p.parse.call(mock, JSON.stringify(token), scope);
+
+      expect(buf.length).to.equal(1);
+      expect(JSON.parse(buf[0])).to.not.equal(undefined);
+      expect(JSON.parse(buf[0]).type).to.equal('TaskInvocation');
+      expect(JSON.parse(buf[0]).id).to.equal('HELLO');
+    });
+  });
 })
