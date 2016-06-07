@@ -7,7 +7,8 @@
 // ----------------------------------
 
 var program = require('commander');
- 
+var vyuhaDaemon = require('../lib/vyuha-daemon');
+
 program
   .version('0.0.1')
   .usage('<cmd>')
@@ -17,7 +18,8 @@ program
   .parse(process.argv);
 
 if (program.daemon) {
-    console.log('Running in Daemon Mode');
+  console.log('Running in Daemon Mode');
+  vyuhaDaemon();
 }
 else {
 
