@@ -18,3 +18,12 @@
 
 - Tests
   ~Tests can wait until coupling with streamify is refactored.~
+
+
+### V2
+
+- Lexer should be a state machine
+  - Define possible states (Comment, Task, Invocation).
+    - Possible states should include lexeme format
+  - Trigger a state change when a certain lexeme is hit.
+  - Return stream of tokens.

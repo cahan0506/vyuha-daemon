@@ -36,16 +36,6 @@ describe('#Lexer', function() {
     buf = null;
     mock = null;
   });
-  describe('#scan', function() {
-    it('should separate a body of text into a series of lines', function() {
-      var body = "hello\nworld";
-      lexer.scan.call(mock, body);
-
-      expect(buf.length).to.equal(2);
-      expect(buf[0]).to.equal("hello");
-      expect(buf[1]).to.equal("world");
-    });
-  });
   describe('#lex', function() {
     it('should detect a comment', function() {
       var lexeme = "# -------";

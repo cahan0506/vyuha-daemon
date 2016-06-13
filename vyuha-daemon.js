@@ -11,6 +11,7 @@ var unzip = require('unzip');
 var mkdirp = require('mkdirp');
 var path = require('path');
 var streamify = require('./lib/streamify');
+var scanner = require('./lib/scanner');
 var lexer = require('./lib/lexer');
 var Parser = require('./lib/parser');
 var Evaluator = require('./lib/evaluator');
@@ -65,7 +66,7 @@ var init = function() {
         var parser = new Parser();
         var evaluator = new Evaluator();
         fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
-          .pipe(streamify(lexer.scan))
+          .pipe(streamify(scanner.scan))
           .pipe(streamify(lexer.lex))
           .pipe(streamify(parser.parse, parser))
           .pipe(streamify(evaluator.queue, evaluator))
