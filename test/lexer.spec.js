@@ -1,20 +1,6 @@
-// chai = require 'chai'
-// spies = require 'chai-spies'
-
-// chai.use spies
-// expect = chai.expect
-
-// base = require '../base'
-// ArrayInterface = require '../Array'
-// describe 'BaseTest', ->
-//     baseObj = null
-//     describe '#_val', ->
-//         it 'should store the passed in object', ->
-//             baseObj = base id:'hello'
-//             expect(baseObj._val.id).to.equal 'hello'
-
 var chai = require('chai');
 var spies = require('chai-spies');
+var mockStream = require('./mock/mockStream');
 
 chai.use(spies);
 var expect = chai.expect;
@@ -22,55 +8,54 @@ var expect = chai.expect;
 var lexer = require('../lib/lexer');
 
 describe('#Lexer', function() {
-  var buf = null;
-  var mock = null;
-  beforeEach(function() {
-    buf = [];
-    mock = {
-      push: function(line) {
-        buf.push(line);
-      }
-    };
-  });
-  afterEach(function() {
-    buf = null;
-    mock = null;
+  describe('#_lex', function() {
+    it('should return a literal token', function() {
+      var token = lexer._lex("hello");
+      expect(token[0]).to.equal("LITERAL");
+      expect(token[1]).to.equal("hello");
+    });
+    it('should return a punctuator token', function() {
+      var token = lexer._lex("\"");
+      expect(token[0]).to.equal("PUNCTUATOR");
+      expect(token[1]).to.equal("\"");
+    });
+    it('should return an binary operator token', function() {
+      var token = lexer._lex(":");
+      expect(token[0]).to.equal("BINARY_OPERATOR");
+      expect(token[1]).to.equal(":");
+    });
+    it('should return an unary operator token', function() {
+      var token = lexer._lex(";");
+      expect(token[0]).to.equal("UNARY_OPERATOR");
+      expect(token[1]).to.equal(";");
+    });
+    it('should return an lparens token', function() {
+      var token = lexer._lex("{");
+      expect(token[0]).to.equal("LPARENS");
+      expect(token[1]).to.equal("{");
+    });
+    it('should return an rparens token', function() {
+      var token = lexer._lex("}");
+      expect(token[0]).to.equal("RPARENS");
+      expect(token[1]).to.equal("}");
+    });
+    it('should return a comment token', function() {
+      var token = lexer._lex("#");
+      expect(token[0]).to.equal("COMMENT");
+      expect(token[1]).to.equal("#");
+    });
   });
   describe('#lex', function() {
-    it('should detect a comment', function() {
-      var lexeme = "# -------";
-      lexer.lex.call(mock, lexeme);
-
-      var data = JSON.parse(buf[0]);
-      expect(buf.length).to.equal(1);
-      expect(data.type).to.equal("COMMENT");
+    var mock = null;
+    beforeEach(function() {
+      mock = mockStream();
     });
-
-    it('should detect a task id', function() {
-      var lexeme = "HELLO:";
-      lexer.lex.call(mock, lexeme);
-
-      var data = JSON.parse(buf[0]);
-      expect(buf.length).to.equal(1);
-      expect(data.type).to.equal("TASK_ID");
+    afterEach(function() {
+      mock = null;
     });
-
-    it('should detect a task command', function() {
-      var lexeme = "\secho 'yes'";
-      lexer.lex.call(mock, lexeme);
-
-      var data = JSON.parse(buf[0]);
-      expect(buf.length).to.equal(1);
-      expect(data.type).to.equal("TASK_COMMAND");
-    });
-
-    it('should detect a task execution', function() {
-      var lexeme = "\sHELLO;";
-      lexer.lex.call(mock, lexeme);
-
-      var data = JSON.parse(buf[0]);
-      expect(buf.length).to.equal(1);
-      expect(data.type).to.equal("TASK_EXECUTION");
+    it('should push tokens into a buffer', function() {
+      lexer.lex.call(mock, 'hello');
+      expect(mock.getBuf().length).to.equal(1);
     });
   })
 });
