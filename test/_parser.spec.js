@@ -1,8 +1,6 @@
 var chai = require('chai');
-var spies = require('chai-spies');
 var mockStream = require('./mock/mockStream');
 
-chai.use(spies);
 var expect = chai.expect;
 
 var Parser = require('../lib/_parser');

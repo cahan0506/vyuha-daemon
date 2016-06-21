@@ -1,7 +1,4 @@
 var chai = require('chai');
-var spies = require('chai-spies');
-
-chai.use(spies);
 var expect = chai.expect;
 
 var streamify = require('../lib/streamify');
