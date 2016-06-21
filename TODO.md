@@ -6,6 +6,8 @@
   - Run specific task
 
 - Parser
+  - Abstract state machine
+  - Define specific errors (StateTransitionError, EvaluationError, etc)
   - Identify builtin commands
 
 - DSL
