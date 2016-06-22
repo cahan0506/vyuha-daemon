@@ -6,6 +6,7 @@
 // script is run.
 // ----------------------------------
 var fs = require('fs');
+var path = require('path');
 var chokidar = require('chokidar');
 var unzip = require('unzip');
 var mkdirp = require('mkdirp');
@@ -13,23 +14,29 @@ var path = require('path');
 var streamify = require('./lib/streamify');
 var scanner = require('./lib/scanner');
 var lexer = require('./lib/lexer');
-var Parser = require('./lib/parser');
-var Evaluator = require('./lib/evaluator');
+var Parser = require('./lib/_parser');
+var Evaluator = require('./lib/_evaluator');
 
 // Constants
 var CONFIG_FILE_PATH = "~/.vyuha/config.json";
 
 // Read <config-file>
-var config = fs.readFileSync(CONFIG_FILE_PATH);
+// var config = fs.readFileSync(CONFIG_FILE_PATH);
+var config = {
+  INPUT_PATH: '../landingzone/',
+  OUTPUT_PATH: '../vyuha_proj/'
+};
 
 var init = function() {
   // Watch central directory.
-  chokidar.watch(config.INPUT_PATH)
+  var absPath = path.resolve(__dirname, config.INPUT_PATH);
+  var outPath = path.resolve(__dirname, config.OUTPUT_PATH);
+  chokidar.watch(absPath)
 
   // If there is a change,
   //    emit received event,
   //    unpackage the zip file.
-    .on('add', addedPath =>
+    .on('add', function(addedPath) {
         var fullpath = null;
         fs.createReadStream(addedPath)
           .pipe(unzip.Parse())
@@ -37,21 +44,24 @@ var init = function() {
             switch(entry.type) {
               case 'Directory':
                 // Make the directory
-                fullpath = path.join(config.OUPUT_PATH, entry.path)
+                fullpath = path.join(outPath, entry.path);
                 mkdirp(fullpath);
                 break;
               case 'File':
                 // Write the file
-                entry.pipe(fs.createWriteStream(fullpath));
+                dirpath = path.resolve(__dirname, fullpath);
+                filename = path.basename(entry.path);
+                filepath = path.join(dirpath, filename);
+                entry.pipe(fs.createWriteStream(filepath));
             }
           })
           .on('close', function() {
             kickoff(fullpath);
           });
-      )
+      })
   ;
 
-  console.log('Watching %s for changes', config.INPUT_PATH);
+  console.log('Watching %s for changes', absPath);
 
   // Once unzipped and unarchived, check for a <Scriptfile>.
   // If it exists,
@@ -83,3 +93,6 @@ var init = function() {
 };
 
 module.exports = init;
+
+// TESTING ONLY
+init();
