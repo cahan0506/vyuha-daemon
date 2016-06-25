@@ -23,8 +23,8 @@ var CONFIG_FILE_PATH = "~/.vyuha/config.json";
 // Read <config-file>
 // var config = fs.readFileSync(CONFIG_FILE_PATH);
 var config = {
-  INPUT_PATH: '../landingzone/',
-  OUTPUT_PATH: '../vyuha_proj/'
+  INPUT_PATH: '../scrappaper/landingzone/',
+  OUTPUT_PATH: '../scrappaper/vyuha_proj/'
 };
 
 var init = function() {

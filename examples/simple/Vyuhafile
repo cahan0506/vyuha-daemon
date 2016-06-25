@@ -1,20 +1,17 @@
-# Vyuhafile
-# --------------------------------
-# This is a comment
+TASKNAME: {
+  echo 'This is a command';
+  echo '---------------------';
+}
 
-# Task names are in all caps
-TASKNAME:
-  echo 'This is a command'
-  echo '---------------------'
+SETUP: {
+  npm install;
+  echo 'setup complete';
+}
 
-SETUP:
-  npm install
-  echo 'setup complete'
-
-RUN:
-  # gulp build
-  node hello.js
-  echo 'project running'
+RUN: {
+  node hello.js;
+  echo 'project running';
+}
 
 TASKNAME;
 SETUP;
