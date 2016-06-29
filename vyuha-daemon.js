@@ -78,9 +78,9 @@ var init = function() {
         fs.createReadStream(path.join(fullpath, 'Vyuhafile'))
           .pipe(streamify(scanner.scan))
           .pipe(streamify(lexer.lex))
-          .pipe(streamify(parser.parse, parser))
-          .pipe(streamify(evaluator.queue, evaluator))
-          .pipe(streamify(evaluator.evaluate, evaluator))
+          .pipe(streamify(parser.parse))
+          .pipe(streamify(evaluator.queue))
+          .pipe(streamify(evaluator.evaluate))
           .on('error', function(err) {
             throw err;
           })
